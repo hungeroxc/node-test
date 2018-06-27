@@ -1,8 +1,12 @@
-function route(url, handle, res) {
+const fs = require('fs')
+
+function route(url, handle, res, query) {
     if(typeof handle[url] === 'function') {
-        handle[url](res)
+        handle[url](res, query)
     } else {
-        console.log('404')
+        res.writeHead(200, {'Content-Type': 'text/html'})
+        fs.createReadStream(__dirname + '/review.html', 'utf8')
+        .pipe(res)
     }
 }
 

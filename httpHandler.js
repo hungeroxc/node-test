@@ -13,12 +13,9 @@ function review(res) {
     .pipe(res)
 }
 
-function api_record(res) {
+function api_record(res, query) {
     res.writeHead(200, {'Content-Type': 'application/json'})
-    const json = {
-        name: 'oxc'
-    }
-    res.end(JSON.stringify(json))
+    res.end(JSON.stringify(query))
 }
 
 module.exports.handler = {
